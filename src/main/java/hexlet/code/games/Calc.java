@@ -31,7 +31,7 @@ public class Calc {
             char operation = OPERATIONS[Utils.generateRandomNumber(OPERATIONS.length)];
             int result = calculateSum(firstNumber, secondNumber, operation);
             questionsAndAnswers[0][i] = firstNumber + " " + operation + " " + secondNumber;
-            questionsAndAnswers[1][i] = Integer.toString(result);
+            questionsAndAnswers[1][i] = String.valueOf(result);
         }
         Engine.startGame(DESCRIPTION_GAME, questionsAndAnswers);
     }

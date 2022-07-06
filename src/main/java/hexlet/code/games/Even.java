@@ -19,7 +19,7 @@ public class Even {
         for (int i = 0; i < Engine.ROUNDS; i++) {
             int number = Utils.generateRandomNumber(MAX_NUMBER);
             String isEvenResult = isEvenNumber(number);
-            questionsAndAnswers[0][i] = Integer.toString(number);
+            questionsAndAnswers[0][i] = String.valueOf(number);
             questionsAndAnswers[1][i] = isEvenResult;
         }
         Engine.startGame(DESCRIPTION_GAME, questionsAndAnswers);
