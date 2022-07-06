@@ -7,6 +7,7 @@ public class Engine {
     public static final int ROUNDS = 3;
     public static final int QUESTION_AND_ANSWERS_ROWS = 2;
     public static final int QUESTION_AND_ANSWERS_COLUMNS = 3;
+    public static final int MAX_NUMBER = 100;
 
     public static void startGame(String gameDescription, String[][] questionsAndAnswers) {
         String playerName = Cli.greet();
