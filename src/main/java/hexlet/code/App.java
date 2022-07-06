@@ -1,30 +1,31 @@
 package hexlet.code;
 
+
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.Gcd;
 import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        String[] games = {"Greet", "Even", "Calc", "GCD", "Progression"};
-        for (int i = 0; i < games.length; i++) {
-            int gameNumber = i + 1;
-            System.out.println(gameNumber + " - " + games[i]);
+        String[] games = {"Exit", "Greet", "Even", "Calc", "GCD", "Progression", "Prime"};
+        for (int i = 1; i < games.length; i++) {
+            System.out.println(i + " - " + games[i]);
         }
-        System.out.println("0 - Exit");
+        System.out.println("0 - " + games[0]);
         Scanner reader = new Scanner(System.in);
         int choice = reader.nextInt();
         System.out.println("Your choice: " + choice + "\n");
-        System.out.println("Welcome to the Brain Games!");
-        switch (choice) {
-            case 1 -> Cli.greet();
-            case 2 -> Even.start();
-            case 3 -> Calc.start();
-            case 4 -> Gcd.start();
-            case 5 -> Progression.start();
+        switch (games[choice]) {
+            case "Greet" -> Cli.greet();
+            case "Even" -> Even.start();
+            case "Calc" -> Calc.start();
+            case "GCD" -> Gcd.start();
+            case "Progression" -> Progression.start();
+            case "Prime" -> Prime.start();
             default -> System.exit(0);
         }
     }

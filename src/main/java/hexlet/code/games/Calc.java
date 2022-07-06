@@ -11,7 +11,7 @@ public class Calc {
     private static final String DESCRIPTION_GAME = "What is the result of the expression?";
     private static final char[] OPERATIONS = {'+', '-', '*'};
 
-    private static int calculateSum(int firstNumber, int secondNumber, char operation) {
+    private static int calculate(int firstNumber, int secondNumber, char operation) {
         int result;
         if (operation == OPERATIONS[0]) {
             result = firstNumber + secondNumber;
@@ -29,7 +29,7 @@ public class Calc {
             int firstNumber = Utils.generateRandomNumber(Engine.MAX_NUMBER);
             int secondNumber = Utils.generateRandomNumber(Engine.MAX_NUMBER);
             char operation = OPERATIONS[Utils.generateRandomNumber(OPERATIONS.length)];
-            int result = calculateSum(firstNumber, secondNumber, operation);
+            int result = calculate(firstNumber, secondNumber, operation);
             questionsAndAnswers[0][i] = firstNumber + " " + operation + " " + secondNumber;
             questionsAndAnswers[1][i] = String.valueOf(result);
         }

@@ -12,6 +12,8 @@ public class Progression {
     private static final String DESCRIPTION_GAME = "What number is missing in the progression?";
     private static final int MIN_LENGTH_PROGRESSION = 5;
     private static final int MAX_LENGTH_PROGRESSION = 10;
+
+    private static final int MIN_STEP_PROGRESSION = 1;
     private static final int MAX_STEP_PROGRESSION = 15;
     private static final int RESULT_PROGRESSION_LENGTH = 2;
 
@@ -38,7 +40,7 @@ public class Progression {
         String[][] questionsAndAnswers = new String[QUESTION_AND_ANSWERS_ROWS][QUESTION_AND_ANSWERS_COLUMNS];
         for (int i = 0; i < Engine.ROUNDS; i++) {
             int firstElement = Utils.generateRandomNumber(Engine.MAX_NUMBER);
-            int step = Utils.generateRandomNumber(MAX_STEP_PROGRESSION);
+            int step = Utils.generateRandomNumber(MIN_STEP_PROGRESSION, MAX_STEP_PROGRESSION);
             int progressionLength = Utils.generateRandomNumber(MIN_LENGTH_PROGRESSION, MAX_LENGTH_PROGRESSION);
             int indexHiddenElement = Utils.generateRandomNumber(progressionLength);
             String[] progression = progression(firstElement, step, progressionLength, indexHiddenElement);
