@@ -1,10 +1,10 @@
 package hexlet.code.games;
 
-import hexlet.code.Core;
+import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import static hexlet.code.Core.QUESTION_AND_ANSWERS_COLUMNS;
-import static hexlet.code.Core.QUESTION_AND_ANSWERS_ROWS;
+import static hexlet.code.Engine.QUESTION_AND_ANSWERS_COLUMNS;
+import static hexlet.code.Engine.QUESTION_AND_ANSWERS_ROWS;
 
 public class Even {
     private static final String DESCRIPTION_GAME = "Answer 'yes' if number even otherwise answer 'no'.";
@@ -16,12 +16,12 @@ public class Even {
 
     public static void start() {
         String[][] questionsAndAnswers = new String[QUESTION_AND_ANSWERS_ROWS][QUESTION_AND_ANSWERS_COLUMNS];
-        for (int i = 0; i < Core.ROUNDS; i++) {
+        for (int i = 0; i < Engine.ROUNDS; i++) {
             int number = Utils.generateRandomNumber(MAX_NUMBER);
             String isEvenResult = isEvenNumber(number);
             questionsAndAnswers[0][i] = Integer.toString(number);
             questionsAndAnswers[1][i] = isEvenResult;
         }
-        Core.startGame(DESCRIPTION_GAME, questionsAndAnswers);
+        Engine.startGame(DESCRIPTION_GAME, questionsAndAnswers);
     }
 }

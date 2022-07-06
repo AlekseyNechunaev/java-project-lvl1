@@ -2,7 +2,7 @@ package hexlet.code;
 
 import java.util.Scanner;
 
-public class Core {
+public class Engine {
 
     public static final int ROUNDS = 3;
     public static final int QUESTION_AND_ANSWERS_ROWS = 2;
