@@ -10,7 +10,7 @@ public class Engine {
     public static final int MAX_NUMBER = 100;
 
     public static void startGame(String gameDescription, String[][] questionsAndAnswers) {
-        String playerName = Cli.greet();
+        String playerName = getPlayerName();
         Scanner reader = new Scanner(System.in);
         System.out.println(gameDescription);
         for (int i = 0; i < ROUNDS; i++) {
@@ -28,5 +28,14 @@ public class Engine {
             }
         }
         System.out.println("Congratulations, " + playerName + "!");
+    }
+
+    public static String getPlayerName() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        String playerName = scanner.nextLine();
+        System.out.println("Hello, " + playerName + "!");
+        return playerName;
     }
 }

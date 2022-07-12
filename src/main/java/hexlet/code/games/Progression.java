@@ -17,23 +17,32 @@ public class Progression {
     private static final int MAX_STEP_PROGRESSION = 15;
     private static final int RESULT_PROGRESSION_LENGTH = 2;
 
-    private static String[] progression(int firstElement, int step, int progressionLength, int indexHiddenElement) {
-        StringBuilder progression = new StringBuilder();
-        String[] result = new String[RESULT_PROGRESSION_LENGTH];
+    private static int[] progression(int firstElement, int step, int progressionLength) {
+        int[] progression = new int[progressionLength];
         int element = firstElement;
-        String hiddenElement = null;
         for (int i = 0; i < progressionLength; i++) {
-            if (i == indexHiddenElement) {
-                hiddenElement = String.valueOf(element);
-                progression.append("..").append(" ");
-            } else {
-                progression.append(element).append(" ");
-            }
+            progression[i] = element;
             element += step;
         }
-        result[0] = progression.toString();
-        result[1] = hiddenElement;
-        return result;
+        return progression;
+    }
+
+    private static String[] getProgressionWithHiddenElement(int[] progression, int indexHiddenElement) {
+        StringBuilder resultProgression = new StringBuilder();
+        String hiddenElement = null;
+        String[] progressionAndHiddenElement = new String[RESULT_PROGRESSION_LENGTH];
+        for (int i = 0; i < progression.length; i++) {
+            int element = progression[i];
+            if (i == indexHiddenElement) {
+                hiddenElement = String.valueOf(element);
+                resultProgression.append("..").append(" ");
+            } else {
+                resultProgression.append(element).append(" ");
+            }
+        }
+        progressionAndHiddenElement[0] = resultProgression.toString();
+        progressionAndHiddenElement[1] = hiddenElement;
+        return progressionAndHiddenElement;
     }
 
     public static void start() {
@@ -43,9 +52,10 @@ public class Progression {
             int step = Utils.generateRandomNumber(MIN_STEP_PROGRESSION, MAX_STEP_PROGRESSION);
             int progressionLength = Utils.generateRandomNumber(MIN_LENGTH_PROGRESSION, MAX_LENGTH_PROGRESSION);
             int indexHiddenElement = Utils.generateRandomNumber(progressionLength);
-            String[] progression = progression(firstElement, step, progressionLength, indexHiddenElement);
-            questionsAndAnswers[0][i] = progression[0];
-            questionsAndAnswers[1][i] = progression[1];
+            int[] progression = progression(firstElement, step, progressionLength);
+            String[] progressionWithHiddenElement = getProgressionWithHiddenElement(progression, indexHiddenElement);
+            questionsAndAnswers[0][i] = progressionWithHiddenElement[0];
+            questionsAndAnswers[1][i] = progressionWithHiddenElement[1];
         }
         Engine.startGame(DESCRIPTION_GAME, questionsAndAnswers);
     }
